@@ -6,8 +6,8 @@ interface INavLink {
 }
 
 const navLinks: INavLink[] = [
-  { text: "Home", path: "/" },
-  { text: "Favorites", path: "/favorites" },
+  { text: "Главная", path: "/" },
+  { text: "Избранное", path: "/favorites" },
 ];
 
 export function Navigation() {

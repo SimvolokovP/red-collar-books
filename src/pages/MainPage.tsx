@@ -6,7 +6,7 @@ export function MainPage() {
   return (
     <div>
       <PageLayout
-        header={<PageHeaderLayout title="Каталог" description="Каталог книг" />}
+        header={<PageHeaderLayout title="Главная" description="Каталог книг" />}
       >
         <BooksList />
       </PageLayout>

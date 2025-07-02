@@ -1,8 +1,8 @@
 import { api } from ".";
-import type { BooksResponse } from "../../models/booksModels";
+import type { Book, BooksResponse } from "../../models/booksModels";
 
 export const booksApi = {
-  searchBooks(
+  getBooks(
     query: string,
     startIndex: number = 0,
     maxResults: number = 20
@@ -14,5 +14,8 @@ export const booksApi = {
         maxResults,
       },
     });
+  },
+  getBookById(bookId: string): Promise<{ data: Book }> {
+    return api.get(`/volumes/${bookId}`);
   },
 };

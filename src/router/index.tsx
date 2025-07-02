@@ -7,7 +7,7 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route Component={MainPage} path="/" />
-      <Route Component={BookPage} path="/:bookId" />
+      <Route Component={BookPage} path="/book/:bookId" />
       <Route Component={FavoritesPage} path="/favorites" />
     </Routes>
   );
