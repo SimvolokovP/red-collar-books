@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="container">
+      <main>
         <AppRouter />
       </main>
     </>
