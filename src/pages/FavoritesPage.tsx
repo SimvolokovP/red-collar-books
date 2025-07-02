@@ -1,7 +1,11 @@
+import { BooksList } from "../components/BooksList";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageLayout } from "../layouts/PageLayout";
+import { useFavoriteBooksStore } from "../store/useFavoriteBooksStore";
 
 export function FavoritesPage() {
+  const books = useFavoriteBooksStore((state) => state.favoriteBooks);
+
   return (
     <div>
       <PageLayout
@@ -12,7 +16,7 @@ export function FavoritesPage() {
           />
         }
       >
-        <div>favorites</div>
+        <BooksList books={books} />
       </PageLayout>
     </div>
   );

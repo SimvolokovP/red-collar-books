@@ -36,7 +36,9 @@ export function BookCard({ book }: BookCardProps) {
       <h3 className="w-full text-left mb-[16px]">{book.volumeInfo.title}</h3>
       <img
         className="boxShadow rounded-xl h-[180px] mb-[16px]"
-        src={book.volumeInfo.imageLinks?.smallThumbnail}
+        src={
+          book.volumeInfo.imageLinks?.smallThumbnail || "/book-placeholder.jpg"
+        }
         alt={book.volumeInfo.title}
       />
       <ul className="w-full text-left mb-[8px]">
