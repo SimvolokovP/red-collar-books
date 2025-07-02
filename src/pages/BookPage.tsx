@@ -3,6 +3,7 @@ import { BookDescr } from "../components/BookDescr";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageLayout } from "../layouts/PageLayout";
 import { useBook } from "../hooks/useBook";
+import { Loader } from "../components/Loader";
 
 export function BookPage() {
   const { bookId } = useParams();
@@ -19,7 +20,7 @@ export function BookPage() {
           />
         }
       >
-        {isLoading && <div>Load..</div>}
+        {isLoading && <Loader />}
         <BookDescr book={book} />
       </PageLayout>
     </div>

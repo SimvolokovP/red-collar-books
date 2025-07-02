@@ -22,3 +22,7 @@ body {
 .boxShadow {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
+
+.darkBack {
+  background-color: rgba(52, 52, 52, 0.7);
+}
