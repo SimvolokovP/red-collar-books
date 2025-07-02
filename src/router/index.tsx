@@ -1,0 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import { MainPage } from "../pages/MainPage";
+import { BookPage } from "../pages/BookPage";
+import { FavoritesPage } from "../pages/FavoritesPage";
+
+export const AppRouter = () => {
+  return (
+    <Routes>
+      <Route Component={MainPage} path="/" />
+      <Route Component={BookPage} path="/:bookId" />
+      <Route Component={FavoritesPage} path="/favorites" />
+    </Routes>
+  );
+};
