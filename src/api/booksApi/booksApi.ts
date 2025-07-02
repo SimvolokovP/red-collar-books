@@ -1,3 +1,4 @@
+import type { AxiosResponse } from "axios";
 import { api } from ".";
 import type { Book, BooksResponse } from "../../models/booksModels";
 
@@ -6,7 +7,7 @@ export const booksApi = {
     query: string,
     startIndex: number = 0,
     maxResults: number = 20
-  ): Promise<{ data: BooksResponse }> {
+  ): Promise<AxiosResponse<BooksResponse>> {
     return api.get("/volumes", {
       params: {
         q: query,
@@ -15,7 +16,7 @@ export const booksApi = {
       },
     });
   },
-  getBookById(bookId: string): Promise<{ data: Book }> {
+  getBookById(bookId: string): Promise<AxiosResponse<Book>> {
     return api.get(`/volumes/${bookId}`);
   },
 };

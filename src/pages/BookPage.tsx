@@ -2,9 +2,12 @@ import { useParams } from "react-router-dom";
 import { BookDescr } from "../components/BookDescr";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageLayout } from "../layouts/PageLayout";
+import { useBook } from "../hooks/useBook";
 
 export function BookPage() {
   const { bookId } = useParams();
+
+  const { book, isLoading } = useBook(bookId);
 
   return (
     <div>
@@ -16,7 +19,8 @@ export function BookPage() {
           />
         }
       >
-        <BookDescr bookId={bookId} />
+        {isLoading && <div>Load..</div>}
+        <BookDescr book={book} />
       </PageLayout>
     </div>
   );
