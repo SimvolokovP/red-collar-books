@@ -5,7 +5,12 @@ export function FavoritesPage() {
   return (
     <div>
       <PageLayout
-        header={<PageHeaderLayout title="Избранное" description="Избранные книги" />}
+        header={
+          <PageHeaderLayout
+            title="Избранное"
+            description="Ваша личная коллекция. Здесь хранятся отмеченные книги, которые вы хотите прочитать или сохранить для будущего."
+          />
+        }
       >
         <div>favorites</div>
       </PageLayout>
