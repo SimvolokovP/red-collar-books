@@ -1,10 +1,13 @@
+import { Header } from "./components/Header";
 import { AppRouter } from "./router";
-
 
 function App() {
   return (
     <>
-      <AppRouter />
+      <Header />
+      <main className="container">
+        <AppRouter />
+      </main>
     </>
   );
 }
