@@ -26,3 +26,17 @@ body {
 .darkBack {
   background-color: rgba(52, 52, 52, 0.7);
 }
+
+.rotate {
+  animation: 0.8s forwards rotate;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
