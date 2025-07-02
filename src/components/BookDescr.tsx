@@ -1,20 +1,49 @@
 import type { Book } from "../models/booksModels";
+import { useFavoriteBooksStore } from "../store/useFavoriteBooksStore";
 
 interface BookDescrProps {
   book?: Book | null;
 }
 
 export function BookDescr({ book }: BookDescrProps) {
+  const { isFavorite, addToFavorites, removeFromFavorites } =
+    useFavoriteBooksStore();
+
+  const bookIsFavorite = isFavorite(book?.id);
+
+  const handleClick = () => {
+    if (book) {
+      if (bookIsFavorite) {
+        removeFromFavorites(book?.id);
+      } else {
+        addToFavorites(book);
+      }
+    }
+  };
+
   return (
     <>
       {book && (
         <div className="flex w-full gap-[16px]">
-          <div className="bg-secondary p-[8px] shadow rounded-xl min-w-[300px] flex justify-center">
-            <img
-              className="h-[250px] boxShadow rounded-xl"
-              src={book?.volumeInfo.imageLinks?.thumbnail}
-              alt={book?.volumeInfo.title}
-            />
+          <div className="bg-secondary p-[8px] shadow rounded-xl min-w-[300px] text-center flex flex-col justify-between items-center">
+            <div>
+              <img
+                className="h-[250px] boxShadow rounded-xl block"
+                src={
+                  book?.volumeInfo.imageLinks?.thumbnail ||
+                  "/book-placeholder.jpg"
+                }
+                alt={book?.volumeInfo.title}
+              />
+            </div>
+            <button
+              className="bg-dark text-secondary p-[4px] text-center rounded-xl cursor-pointer w-full"
+              onClick={handleClick}
+            >
+              {bookIsFavorite
+                ? "Удалить из избранного"
+                : "Добавить в избранное"}
+            </button>
           </div>
           <div className="flex flex-col gap-[16px]">
             <div className="bg-secondary p-[8px] rounded-xl shadow">

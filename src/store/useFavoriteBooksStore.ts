@@ -6,7 +6,7 @@ interface FavoriteBooksState {
   favoriteBooks: Book[];
   addToFavorites: (book: Book) => void;
   removeFromFavorites: (bookId: string) => void;
-  isFavorite: (bookId: string) => boolean;
+  isFavorite: (bookId: string | undefined) => boolean;
 }
 
 export const useFavoriteBooksStore = create<FavoriteBooksState>()(
@@ -23,7 +23,7 @@ export const useFavoriteBooksStore = create<FavoriteBooksState>()(
             (book) => book.id !== bookId
           ),
         })),
-      isFavorite: (bookId: string) =>
+      isFavorite: (bookId: string | undefined) =>
         get().favoriteBooks.some((book) => book.id === bookId),
     }),
     {
