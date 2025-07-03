@@ -7,6 +7,7 @@ import { useBooksFilters, type FilterType } from "../hooks/useBooksFilters";
 import { useInfinityBookList } from "../hooks/useInfinityBookList";
 import { ErrorBlock } from "../components/ErrorBlock";
 import { Loader } from "../components/Loader";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
 
 const filterItems = [
   { label: "Paid Google eBooks", value: "paid-ebooks" },
@@ -21,7 +22,7 @@ export function MainPage() {
 
   const { books, cursorRef, isLoadingNextPage, error, isLoading, hasMore } =
     useInfinityBookList({
-      query,
+      query: useDebouncedValue(query, 500),
       filter,
       pageSize: 16,
     });

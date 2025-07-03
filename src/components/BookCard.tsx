@@ -33,7 +33,9 @@ export function BookCard({ book }: BookCardProps) {
           <IoMdHeartEmpty size={18} />
         )}
       </button>
-      <h3 className="w-full text-left mb-[16px]">{book.volumeInfo.title}</h3>
+      <h3 className="w-full text-left mb-[16px] max-w-[274px]">
+        {book.volumeInfo.title}
+      </h3>
       <img
         className="boxShadow rounded-xl h-[180px] mb-[16px]"
         src={
