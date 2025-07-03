@@ -25,7 +25,7 @@ export function BookCard({ book }: BookCardProps) {
     <article className="relative bg-secondary p-[8px] rounded-xl h-full shadow flex flex-col items-center">
       <button
         onClick={handleClick}
-        className="absolute top-[8px] right-[8px] cursor-pointer border-1 rounded-full p-1"
+        className="absolute top-[8px] right-[8px] cursor-pointer border-1 rounded-full p-1 bg-secondary"
       >
         {bookIsFavorite ? (
           <IoMdHeart size={18} />

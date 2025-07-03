@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-type FilterType = "ebooks" | "free-ebooks" | "full" | "paid-ebooks" | "partial";
+export type FilterType =
+  | "ebooks"
+  | "free-ebooks"
+  | "full"
+  | "paid-ebooks"
+  | "partial";
 
 export function useBooksFilters() {
   const [query, setQuery] = useState<string>("React");

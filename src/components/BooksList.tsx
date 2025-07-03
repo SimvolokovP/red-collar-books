@@ -3,24 +3,10 @@ import { BookCard } from "./BookCard";
 
 interface BooksListProps {
   books: Book[];
+  isLoading?: boolean;
 }
 
-export function BooksList({ books }: BooksListProps) {
-  //   const [books, setBooks] = useState<Book[]>([]);
-
-  //   const fetchBooks = async () => {
-  //     const res = await booksApi.searchBooks("React");
-  //     console.log(res);
-  //     console.log(res.data.items);
-  //     setBooks(res.data.items);
-  //   };
-
-  //   useEffect(() => {
-  //     fetchBooks();
-  //   }, []);
-
-  const isLoading = false;
-
+export function BooksList({ books, isLoading = false }: BooksListProps) {
   const hasBooks = books.length > 0 && !isLoading;
 
   return (

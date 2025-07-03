@@ -8,9 +8,10 @@ interface DropdownOption {
 interface DropdownProps {
   options: DropdownOption[];
   value?: string;
-  onChange: (value: string) => void;
+  onChange: (value: string | null) => void;
   placeholder?: string;
   className?: string;
+  isClearBtn?: boolean;
 }
 
 export const Dropdown = ({
@@ -19,6 +20,7 @@ export const Dropdown = ({
   onChange,
   placeholder = "Select...",
   className = "",
+  isClearBtn = false,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -70,6 +72,17 @@ export const Dropdown = ({
 
       {isOpen && (
         <div className="absolute z-10 w-full mt-1 bg-secondary border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-auto">
+          {isClearBtn && (
+            <div
+              className={`px-3 py-2 cursor-pointer hover:bg-gray-100`}
+              onClick={() => {
+                onChange(null);
+                setIsOpen(false);
+              }}
+            >
+              Убрать фильтр
+            </div>
+          )}
           {options.map((option) => (
             <div
               key={option.value}

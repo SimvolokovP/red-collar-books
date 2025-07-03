@@ -2,16 +2,25 @@ import type { AxiosResponse } from "axios";
 import { api } from ".";
 import type { Book, BooksResponse } from "../../models/booksModels";
 
+interface GetBooksParams {
+  q: string;
+  filter?: string | null;
+  startIndex?: number;
+  maxResults?: number;
+}
+
 export const booksApi = {
-  getBooks(
-    query: string,
-    startIndex: number = 0,
-    maxResults: number = 20
-  ): Promise<AxiosResponse<BooksResponse>> {
+  getBooks({
+    q,
+    filter = "full",
+    maxResults = 16,
+    startIndex = 0,
+  }: GetBooksParams): Promise<AxiosResponse<BooksResponse>> {
     return api.get("/volumes", {
       params: {
-        q: query,
+        q,
         startIndex,
+        filter,
         maxResults,
       },
     });
