@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import type { FilterType } from "./useBooksFilters";
 import type { Book } from "../models/booksModels";
 import { booksApi } from "../api/booksApi/booksApi";
+import { useIntersectionObserver } from "./useIntersectionObserver";
 
 interface UseInfinityBookListParams {
   query?: string;
@@ -75,27 +76,11 @@ export function useInfinityBookList({
     fetchBooks(0);
   }, [fetchBooks]);
 
-  const cursorRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (!node) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting && hasMore) {
-            fetchNextPage();
-          }
-        },
-        { threshold: 0.1 }
-      );
-
-      observer.observe(node);
-
-      return () => {
-        observer.disconnect();
-      };
-    },
-    [fetchNextPage, hasMore]
-  );
+  const cursorRef = useIntersectionObserver({
+    callback: fetchNextPage,
+    hasMore,
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     resetBooks();

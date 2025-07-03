@@ -57,7 +57,11 @@ export function MainPage() {
         {isLoading && <Loader />}
         <BooksList books={books} isLoading={isLoading} />
         <div ref={cursorRef} className="h-10">
-          {isLoadingNextPage && hasMore && <div>Loading more books...</div>}
+          {isLoadingNextPage && hasMore && (
+            <div className="text-center text-[24px] font-bold">
+              Loading more books...
+            </div>
+          )}
         </div>
       </PageLayout>
     </div>
