@@ -16,6 +16,7 @@ export const booksApi = {
     maxResults = 16,
     startIndex = 0,
   }: GetBooksParams): Promise<AxiosResponse<BooksResponse>> {
+    console.log(startIndex);
     return api.get("/volumes", {
       params: {
         q,
