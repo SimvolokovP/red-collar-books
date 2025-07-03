@@ -12,13 +12,15 @@ export function PageHeaderLayout({
   actions,
 }: PageHeaderLayoutProps) {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col justify-between items-center md:flex-row gap-[16px]">
       <div>
-        <h1 className="text-2xl font-bold mb-[8px]">{title}</h1>
+        <h1 className="text-2xl font-bold mb-[8px] text-center md:text-left">
+          {title}
+        </h1>
         {description && <p className="font-light mb-[8px]">{description}</p>}
       </div>
 
-      <div className="flex gap-[16px] mb-[8px]">{actions}</div>
+      <div className="flex gap-[16px] mb-[8px] w-full md:w-auto">{actions}</div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Navigation } from "./Navigation";
 export function Header() {
   return (
     <header className="container">
-      <div className="flex items-center justify-between">
+      <div className="items-center justify-between hidden md:flex">
         <span>
           <svg
             width="162"

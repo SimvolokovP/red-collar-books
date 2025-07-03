@@ -35,15 +35,16 @@ export function MainPage() {
             title="Главная"
             description="Исследуйте мир литературы - тысячи книг на любой вкус. Удобный поиск и фильтры помогут найти именно то, что вам нужно."
             actions={
-              <div className="flex items-center gap-[16px]">
+              <div className="flex items-center gap-[16px] flex-col md:flex-row w-full">
                 <Input
-                  placeholder="Search.."
+                  className="w-full md:w-[240px]"
+                  placeholder="Поиск.."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <Dropdown
-                  className="min-w-[240px]"
-                  placeholder="Filter.."
+                  className="w-full md:w-[240px]"
+                  placeholder="Выбрать фильтр"
                   options={filterItems}
                   onChange={(e) => setFilter(e as FilterType)}
                   value={filter as FilterType}

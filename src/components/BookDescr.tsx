@@ -1,30 +1,14 @@
 import type { Book } from "../models/booksModels";
-import { useFavoriteBooksStore } from "../store/useFavoriteBooksStore";
 
 interface BookDescrProps {
   book?: Book | null;
 }
 
 export function BookDescr({ book }: BookDescrProps) {
-  const { isFavorite, addToFavorites, removeFromFavorites } =
-    useFavoriteBooksStore();
-
-  const bookIsFavorite = isFavorite(book?.id);
-
-  const handleClick = () => {
-    if (book) {
-      if (bookIsFavorite) {
-        removeFromFavorites(book?.id);
-      } else {
-        addToFavorites(book);
-      }
-    }
-  };
-
   return (
     <>
       {book && (
-        <div className="flex w-full gap-[16px]">
+        <div className="flex w-full gap-[16px] md:flex-row flex-col">
           <div className="bg-secondary p-[8px] shadow rounded-xl min-w-[300px] text-center flex flex-col gap-[8px] items-center">
             <div>
               <img
@@ -36,14 +20,6 @@ export function BookDescr({ book }: BookDescrProps) {
                 alt={book?.volumeInfo.title}
               />
             </div>
-            <button
-              className="bg-dark text-secondary p-[4px] text-center rounded-xl cursor-pointer w-full"
-              onClick={handleClick}
-            >
-              {bookIsFavorite
-                ? "Удалить из избранного"
-                : "Добавить в избранное"}
-            </button>
           </div>
           <div className="flex flex-col gap-[16px]">
             <div className="bg-secondary p-[8px] rounded-xl shadow">
