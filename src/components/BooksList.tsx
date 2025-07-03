@@ -21,9 +21,11 @@ export function BooksList({ books }: BooksListProps) {
 
   const isLoading = false;
 
+  const hasBooks = books.length > 0 && !isLoading;
+
   return (
     <div>
-      {books.length && !isLoading ? (
+      {hasBooks ? (
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[6px]">
           {books.map((book) => (
             <li key={book.id}>

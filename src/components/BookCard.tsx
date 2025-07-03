@@ -28,9 +28,9 @@ export function BookCard({ book }: BookCardProps) {
         className="absolute top-[8px] right-[8px] cursor-pointer border-1 rounded-full p-1"
       >
         {bookIsFavorite ? (
-          <IoMdHeart className="rotate" size={18} />
+          <IoMdHeart size={18} />
         ) : (
-          <IoMdHeartEmpty className="rotate" size={18} />
+          <IoMdHeartEmpty size={18} />
         )}
       </button>
       <h3 className="w-full text-left mb-[16px]">{book.volumeInfo.title}</h3>

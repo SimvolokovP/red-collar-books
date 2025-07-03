@@ -2,8 +2,116 @@ import { BooksList } from "../components/BooksList";
 import { PageHeaderLayout } from "../layouts/PageHeaderLayout";
 import { PageLayout } from "../layouts/PageLayout";
 import type { Book } from "../models/booksModels";
+import { Dropdown } from "../UI/Dropdown";
+import { Input } from "../UI/Input";
 
 const books: Book[] = [
+  {
+    kind: "books#volume",
+    id: "2QVbEQAAQBAJ",
+    etag: "XkxP5i1OfiM",
+    selfLink:
+      "https://content-books.googleapis.com/books/v1/volumes/2QVbEQAAQBAJ",
+    volumeInfo: {
+      title:
+        "Разработка веб-приложений с использованием JavaScript и React: Практическое руководство",
+      authors: ["Программист"],
+      publisher: "Litres",
+      publishedDate: "2025-05-02",
+      description:
+        "Эта книга представляет собой полное руководство по разработке веб-приложений с использованием JavaScript и React. В ней вы найдете подробные описания и примеры кода, которые помогут вам освоить основы и продвинутые техники создания современных веб-приложений. Книга охватывает темы от базовой настройки проекта до продвинутых тем, таких как управление состоянием, маршрутизация и оптимизация производительности. С помощью этой книги вы сможете создавать быстрые, масштабируемые и удобные веб-приложения, которые соответствуют современным стандартам веб-разработки.",
+      industryIdentifiers: [
+        {
+          type: "ISBN_13",
+          identifier: "9785047529868",
+        },
+        {
+          type: "ISBN_10",
+          identifier: "504752986X",
+        },
+      ],
+      readingModes: {
+        text: true,
+        image: true,
+      },
+      pageCount: 80,
+      printType: "BOOK",
+      categories: ["Computers"],
+      maturityRating: "NOT_MATURE",
+      allowAnonLogging: false,
+      contentVersion: "preview-1.0.0",
+      panelizationSummary: {
+        containsEpubBubbles: false,
+        containsImageBubbles: false,
+      },
+      imageLinks: {
+        smallThumbnail:
+          "http://books.google.com/books/content?id=2QVbEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        thumbnail:
+          "http://books.google.com/books/content?id=2QVbEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      },
+      language: "ru",
+      previewLink:
+        "http://books.google.ru/books?id=2QVbEQAAQBAJ&pg=PT12&dq=react&hl=&cd=10&source=gbs_api",
+      infoLink:
+        "https://play.google.com/store/books/details?id=2QVbEQAAQBAJ&source=gbs_api",
+      canonicalVolumeLink:
+        "https://play.google.com/store/books/details?id=2QVbEQAAQBAJ",
+    },
+    saleInfo: {
+      country: "RU",
+      saleability: "FOR_SALE",
+      isEbook: true,
+      listPrice: {
+        amount: 248.75,
+        currencyCode: "RUB",
+      },
+      retailPrice: {
+        amount: 223.88,
+        currencyCode: "RUB",
+      },
+      buyLink:
+        "https://play.google.com/store/books/details?id=2QVbEQAAQBAJ&rdid=book-2QVbEQAAQBAJ&rdot=1&source=gbs_api",
+      offers: [
+        {
+          finskyOfferType: 1,
+          listPrice: {
+            amountInMicros: 248750000,
+            currencyCode: "RUB",
+          },
+          retailPrice: {
+            amountInMicros: 223880000,
+            currencyCode: "RUB",
+          },
+        },
+      ],
+    },
+    accessInfo: {
+      country: "RU",
+      viewability: "PARTIAL",
+      embeddable: true,
+      publicDomain: false,
+      textToSpeechPermission: "ALLOWED",
+      epub: {
+        isAvailable: true,
+        acsTokenLink:
+          "http://books.google.ru/books/download/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D0%B2%D0%B5%D0%B1_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6-sample-epub.acsm?id=2QVbEQAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api",
+      },
+      pdf: {
+        isAvailable: true,
+        acsTokenLink:
+          "http://books.google.ru/books/download/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D0%B2%D0%B5%D0%B1_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6-sample-pdf.acsm?id=2QVbEQAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api",
+      },
+      webReaderLink:
+        "http://play.google.com/books/reader?id=2QVbEQAAQBAJ&hl=&source=gbs_api",
+      accessViewStatus: "SAMPLE",
+      quoteSharingAllowed: false,
+    },
+    searchInfo: {
+      textSnippet:
+        "... \u003cb\u003eReact\u003c/b\u003e и его ролью в разработке веб-приложений. Теперь давайте углубимся детали рассмотрим один из наиболее важных аспектов \u003cb\u003eReact\u003c/b\u003e: компоненты JSX. Компоненты: строительные блоки \u003cb\u003eReact\u003c/b\u003e Компоненты. –. это основные строительные блоки любого&nbsp;...",
+    },
+  },
   {
     kind: "books#volume",
     id: "zNedDwAAQBAJ",
@@ -222,6 +330,16 @@ export function MainPage() {
           <PageHeaderLayout
             title="Главная"
             description="Исследуйте мир литературы - тысячи книг на любой вкус. Удобный поиск и фильтры помогут найти именно то, что вам нужно."
+            actions={
+              <div className="flex items-center gap-[16px]">
+                <Input placeholder="Search.." />
+                <Dropdown
+                  placeholder="Filter.."
+                  options={[{ label: "text", value: "1" }]}
+                  onChange={(e) => console.log(e)}
+                />
+              </div>
+            }
           />
         }
       >

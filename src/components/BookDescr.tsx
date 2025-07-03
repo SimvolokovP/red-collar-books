@@ -25,7 +25,7 @@ export function BookDescr({ book }: BookDescrProps) {
     <>
       {book && (
         <div className="flex w-full gap-[16px]">
-          <div className="bg-secondary p-[8px] shadow rounded-xl min-w-[300px] text-center flex flex-col justify-between items-center">
+          <div className="bg-secondary p-[8px] shadow rounded-xl min-w-[300px] text-center flex flex-col gap-[8px] items-center">
             <div>
               <img
                 className="h-[250px] boxShadow rounded-xl block"

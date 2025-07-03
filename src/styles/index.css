@@ -27,7 +27,7 @@ body {
   background-color: rgba(52, 52, 52, 0.7);
 }
 
-.rotate {
+/* .rotate {
   animation: 0.8s forwards rotate;
 }
 
@@ -39,4 +39,4 @@ body {
   to {
     transform: rotateY(360deg);
   }
-}
+} */
