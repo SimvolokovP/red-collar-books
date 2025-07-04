@@ -8,6 +8,8 @@ import { useInfinityBookList } from "../hooks/useInfinityBookList";
 import { ErrorBlock } from "../components/ErrorBlock";
 import { Loader } from "../components/Loader";
 import { useDebouncedValue } from "../hooks/useDebouncedValue";
+import { useToast } from "../hooks/useToast";
+import { useEffect } from "react";
 
 const filterItems = [
   { label: "Paid Google eBooks", value: "paid-ebooks" },
@@ -26,6 +28,14 @@ export function MainPage() {
       filter,
       pageSize: 16,
     });
+
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (error) {
+      showToast("Не удалось загрузить книги. Попробуйте позже", "error");
+    }
+  }, [error]);
 
   return (
     <div>
@@ -58,7 +68,7 @@ export function MainPage() {
         {error && <ErrorBlock error={error} isMainPage />}
         {isLoading && <Loader />}
         <BooksList books={books} isLoading={isLoading} />
-        {hasMore && !error && (
+        {hasMore && (
           <div ref={cursorRef} className="h-10">
             {isLoadingNextPage && hasMore && (
               <div className="text-center text-[24px] font-bold">

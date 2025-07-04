@@ -50,6 +50,7 @@ export function useInfinityBookList({
         currentPageRef.current = startIndex / pageSize;
       } catch (err) {
         setError("Failed to fetch books");
+        setHasMore(false);
         console.error("Error fetching books:", err);
       } finally {
         if (isInitialLoad) {

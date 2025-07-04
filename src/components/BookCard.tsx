@@ -3,6 +3,7 @@ import { getShortText } from "../helpers/getShortText";
 import type { Book } from "../models/booksModels";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useFavoriteBooksStore } from "../store/useFavoriteBooksStore";
+import { useToast } from "../hooks/useToast";
 
 interface BookCardProps {
   book: Book;
@@ -13,11 +14,15 @@ export function BookCard({ book }: BookCardProps) {
     useFavoriteBooksStore();
   const bookIsFavorite = isFavorite(book.id);
 
+  const { showToast } = useToast();
+
   const handleClick = () => {
     if (bookIsFavorite) {
       removeFromFavorites(book.id);
+      showToast(`Книга "${book.volumeInfo.title}" удалена из избранного`, "success");
     } else {
       addToFavorites(book);
+      showToast(`Книга "${book.volumeInfo.title}" добавлена в избранное`, "success");
     }
   };
 
@@ -33,9 +38,7 @@ export function BookCard({ book }: BookCardProps) {
           <IoMdHeartEmpty size={18} />
         )}
       </button>
-      <h3 className="w-full text-left mb-[16px] max-w-[274px]">
-        {book.volumeInfo.title}
-      </h3>
+      <h3 className="w-full text-left mb-[16px]">{book.volumeInfo.title}</h3>
       <img
         className="boxShadow rounded-xl h-[180px] mb-[16px]"
         src={

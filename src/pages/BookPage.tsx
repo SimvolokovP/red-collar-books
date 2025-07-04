@@ -6,6 +6,8 @@ import { useBook } from "../hooks/useBook";
 import { Loader } from "../components/Loader";
 import { ErrorBlock } from "../components/ErrorBlock";
 import { useFavoriteBooksStore } from "../store/useFavoriteBooksStore";
+import { useEffect } from "react";
+import { useToast } from "../hooks/useToast";
 
 export function BookPage() {
   const { bookId } = useParams();
@@ -17,6 +19,8 @@ export function BookPage() {
 
   const bookIsFavorite = isFavorite(book?.id);
 
+  const { showToast } = useToast();
+
   const handleClick = () => {
     if (book) {
       if (bookIsFavorite) {
@@ -26,6 +30,12 @@ export function BookPage() {
       }
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      showToast("Не удалось загрузить информацию о книге. Попробуйте позже", "error");
+    }
+  }, [error]);
 
   return (
     <div>
