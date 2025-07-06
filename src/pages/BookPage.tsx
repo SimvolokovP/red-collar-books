@@ -25,15 +25,26 @@ export function BookPage() {
     if (book) {
       if (bookIsFavorite) {
         removeFromFavorites(book?.id);
+        showToast(
+          `Книга "${book.volumeInfo.title}" удалена из избранного`,
+          "success"
+        );
       } else {
         addToFavorites(book);
+        showToast(
+          `Книга "${book.volumeInfo.title}" добавлена в избранное`,
+          "success"
+        );
       }
     }
   };
 
   useEffect(() => {
     if (error) {
-      showToast("Не удалось загрузить информацию о книге. Попробуйте позже", "error");
+      showToast(
+        "Не удалось загрузить информацию о книге. Попробуйте позже",
+        "error"
+      );
     }
   }, [error]);
 
